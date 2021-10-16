@@ -1,21 +1,13 @@
-function userProgress(time) {
-	// должна стартовать с 0
-	let start = 0;
-	var time = Math.round(time*1000/100);
-	let progressElement = document.getElementById('userProgress'); // элемент прогресс бара
-	let intervalId = setInterval(function () {
-		if (start > 100) {
-			clearInterval(intervalId);
-			userProgressCallBack();
-		} else {
-			progressElement.value = start;
-		}
-		start++;
-	}, time);
-}
+let comments = [];
 
-function userProgressCallBack() {
-	document.querySelector('.hidden-block').style.display = 'block';
-}
+document.getElementById('comment-add').onclick = function(event) {
+	event.preventDefault();
+	let commentName = document.getElementById('comment-name');
+	let commentBody = document.getElementById('comment-body');
 
-userProgress(2);
+	let comment = {
+		name: commentName.value, // получение значения из инпута
+		body: commentBody.value,
+		time: Math.floor(Date.now()/1000)
+	}
+}
